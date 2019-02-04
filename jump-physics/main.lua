@@ -57,14 +57,17 @@ function love.draw(dt)
   for i, player in ipairs(players) do
     love.graphics.setColor(player.color)
     love.graphics.rectangle("fill", player.x, player.y, player.w, player.h)
-    love.graphics.print(player.yVelocity, player.x, 400)
-    love.graphics.print((player.isJumping and "true" or "false"), player.x, 430)
-    love.graphics.print(player.mass, player.x, 450)
+
+    if debug then
+      love.graphics.print(player.yVelocity, player.x, 400)
+      love.graphics.print((player.isJumping and "true" or "false"), player.x, 430)
+      love.graphics.print(player.mass, player.x, 450)
+    end
   end
 end
 
 -- ============== FUNCTIONS ====================
 
 function delta_v(dt)
-  return dt * 500
+  return dt * 1000
 end
